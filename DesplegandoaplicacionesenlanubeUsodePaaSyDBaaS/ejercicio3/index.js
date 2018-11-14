@@ -10,3 +10,5 @@ app.put('/:persona1/:persona2',function(req, res){
 app.listen(3000, function () {
   console.log('la aplicación express ya se ha iniciado.');
 });
+
+module.exports = app

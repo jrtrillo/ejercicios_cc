@@ -7,6 +7,9 @@ app.get('/', function (req, res) {
 app.put('/:persona1/:persona2',function(req, res){
 	res.send(req.params.persona1+" y "+req.params.persona2+" se van de vacaciones juntos");
 });
+var port=process.env.PORT || 3000
 app.listen(3000, function () {
   console.log('la aplicación express ya se ha iniciado.');
 });
+
+module.exports = app

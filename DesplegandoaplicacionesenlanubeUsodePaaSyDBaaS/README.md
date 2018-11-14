@@ -17,8 +17,8 @@ Una vez realizada estas acciones se procede a entrar en la cuenta de Heroku y a 
 
 Se introducen en la línea de Git Bash Here los siguientes comandos:
 
-	-git clone https://github.com/heroku/python-getting-started.git
-	-cd python-getting-started
+	-git clone https://github.com/heroku/node-js-getting-started.git
+	-cd node-js-getting-started
 
 Una vez que ya se ha realizado estas dos acciones se procede a realizar el despliegue. Para ello se va a seguir los pasos del [enlace](https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app)
 
@@ -31,7 +31,7 @@ Por tanto, se meten los siguientes comandos:
 El primer comando crea la aplicación.
 Con el segundo se despliega el código
 Con el tercero te puedes asegurar que existe una aplicación que se esta ejecutando.
-Con el cuarto se abre la apliación y nos aparece directamente el [enlace](https://blooming-fortress-91194.herokuapp.com/)
+Con el cuarto se abre la apliación y nos aparece directamente el [enlace](https://arcane-dusk-13715.herokuapp.com/)
 
 ## Ejercicio 3:Realizar una app en express (o el lenguaje y marco elegido) que incluya variables como en el caso anterior.
 
@@ -77,26 +77,57 @@ Y en la url http://localhost:3000/ aparecerá:
 
 ## Ejercicio 4: Crear pruebas para las diferentes rutas de la aplicación.
 
-Nos volvemos a mover a la carpeta donde se ha realizado el anterior ejercicio y se realiza el siguiente comando:
+Nos volvemos a mover a la carpeta donde se ha realizado el anterior ejercicio, crear la carpeta nodes_modules, el archivo package.json y package-lock.json.
 
+Seguidamente se va a hacer es instalar mocha y el supertest.
+
+	npm install mocha -g
+	npm install mocha --save-dev
 	npm install --save-dev supertest
 
+A continuación, creamos un archivo llamado probar.js que será el test y tiene el siguiente contenido:
 
+var request = require('supertest'),
+	app = require('./index.js');
 
+	describe( "Test de entrada correctamente ", function() {
+		it('se crea correctamente', function (done) {
+		request(app)
+			.put('/uno/dos')
+			.expect('Content-Type', "text/html; charset=utf-8")
+			.expect(200,done);
+		});
+	});
 
+	describe( "Test de Nodo Raiz ", function() {
+		it('se crea correctamente', function (done) {
+		request(app)
+			.get('/')
+			.expect('Content-Type', "text/html; charset=utf-8")
+			.expect(200,done);
+		});
+	});
 
+	describe( "Test de olvido de dos parametros ", function() {
+		it('se crea correctamente', function (done) {
+		request(app)
+			.get('/joseramon')
+			.expect(404,done);
+		});
+	});
 
+	describe( "Test de olvido de un parametro", function() {
+		it('se crea correctamente', function (done) {
+		request(app)
+			.put('/uno')
+			.expect(404,done);
+		});
+	});
+Después, se copia el archivo index.js y se pone en la misma carpeta donde se encuentra el archivo probar.js.
 
+por ultimo se ejecuta en la carpeta que se encuentra probar.js el siguiente comando.
 
-
-
-
-
-
-
-
-
-
+	mocha probar.js
 
 ## Ejercicio 5:Instalar y echar a andar tu primera aplicación en Heroku.
 
@@ -110,11 +141,35 @@ Snap CI no funciona y Codeship pide añadir un número de cuenta.
 
 ## Ejercicio 8:Preparar la aplicación con la que se ha venido trabajando hasta este momento para ejecutarse en un PaaS, el que se haya elegido.
 
+Lo primero que se ha hecho ha sido modificar una parte del package.json por
+
+	"scripts": {
+    	"start": "node index.js",
+    	"test": "echo \"Error: no test specified\" && exit 1"
+  	},
+
+  Como no funciona se ha creado un archivo llamado Procfile que tiene como contenido
+
+  web: node index.js
+
+A continuación, en la misma carpeta se hace lo siguiente
+
+	-git init
+	-git add .
+	-git commit -am "Initial commit"
+	-heroku create 
+	-git push heroku master
+	-heroku open
+
+Y ha mostrado el siguiente [enlace](https://salty-retreat-32943.herokuapp.com/)
+
 ## Ejercicio 9:Crear una aplicación mínima y usar un buildpack no estándar para desplegarla en Heroku o un cartridge no estándar en OpenShift.
 
 ## Ejercicio 10:
 Darse de alta en un servicio Redis en la nube y realizar sobre él las operaciones básicas desde el panel de control.
+
 Instalar un cliente de línea de órdenes de Redis o una biblioteca cliente REST y realizar desde él las operaciones básicas de creación y lectura de información.
+
 Ejecutar ejemplos de cualquier lenguaje de programación sobre la instalación realizada.
 
 ## Ejercicio 11:Realizar un pequeño programa, en el lenguaje elegido y sobre la base de datos "tradicional" elegida (PostgreSQL o cualquiera que se pueda usar online) que realice el ciclo básico de una base de datos. Puede ser la aplicación de calificación de empresas realizada anteriormente.
