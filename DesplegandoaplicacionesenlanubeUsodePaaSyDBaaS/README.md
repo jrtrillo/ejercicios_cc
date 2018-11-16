@@ -6,21 +6,22 @@ Se puede ver en el [enlace](https://github.com/jrtrillo/ejercicios_cc/blob/maste
 
 ## Ejercicio 2: Crear una aplicación en OpenShift o en algún otro PaaS en el que se haya dado uno de alta. Realizar un despliegue de prueba usando alguno de los ejemplos incluidos con el PaaS.
 
-Se ha decidido utilizar Heroku para realizar un despliegue de prueba de Python usando alguno de los ejemplos incluidos de PaaS. Para ello se han realizado los siguientes pasos que se puede ver en el [enlace](https://devcenter.heroku.com/articles/getting-started-with-python)
+Se ha decidido utilizar Heroku para realizar un despliegue de prueba de Node usando alguno de los ejemplos incluidos de PaaS. Para ello se han realizado los siguientes pasos que se puede ver en el [enlace](https://devcenter.heroku.com/articles/getting-started-with-node)
 
 El primer paso son:
-	 -Instalar Python version 3.7.
+
+	 -Instalar Node.
 	 -Tener una cuenta en Heroku.
 	 -Instalar Heroku.
 
-Una vez realizada estas acciones se procede a entrar en la cuenta de Heroku y a clonar la base de datos, para ver los paso a realizar se siguen los pasos del siguiente [enlace](https://devcenter.heroku.com/articles/getting-started-with-python#prepare-the-app).
+Una vez realizada estas acciones se procede a entrar en la cuenta de Heroku y a clonar la base de datos, para ver los paso a realizar se siguen los pasos del siguiente [enlace](https://devcenter.heroku.com/articles/getting-started-with-node#prepare-the-app).
 
 Se introducen en la línea de Git Bash Here los siguientes comandos:
 
 	-git clone https://github.com/heroku/node-js-getting-started.git
 	-cd node-js-getting-started
 
-Una vez que ya se ha realizado estas dos acciones se procede a realizar el despliegue. Para ello se va a seguir los pasos del [enlace](https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app)
+Una vez que ya se ha realizado estas dos acciones se procede a realizar el despliegue. Para ello se va a seguir los pasos del [enlace](https://devcenter.heroku.com/articles/getting-started-with-node#deploy-the-app)
 
 Por tanto, se meten los siguientes comandos:
 	-heroku create 
